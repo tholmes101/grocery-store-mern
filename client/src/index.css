@@ -10,3 +10,12 @@
   --color-primary: #4fbf8b;
   --color-primary-dull: #44ae7c;
 }
+
+.h-9 {
+  display: flex;
+  width: 170px;
+  height: 80px;
+  margin-top: -10px;
+  margin-bottom: -10px;
+
+}
