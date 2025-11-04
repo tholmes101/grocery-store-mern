@@ -1,0 +1,78 @@
+.ban1 {
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .ban1 img {
+    display: block;
+  }
+}
+
+
+.ban-img2 {
+  font-size: 1.875rem; /* text-3xl */
+  line-height: 1.25;   /* leading-tight */
+  font-weight: 700;    /* font-bold */
+  text-align: center;  /* text-center */
+  max-width: 18rem;    /* max-w-72 */
+
+}
+
+@media (min-width: 768px) {
+  .ban-img2 {
+    font-size: 2.25rem;  /* md:text-4xl */
+    line-height: 2.5rem;
+    text-align: left;    /* md:text-left */
+    max-width: 20rem;    /* md:max-w-80 */
+  }
+}
+
+@media (min-width: 1024px) {
+  .ban-img2 {
+    font-size: 3rem;       /* lg:text-5xl */
+    line-height: 3.75rem;  /* lg:leading-15 */
+    max-width: 26.25rem;   /* lg:max-w-105 */
+  }
+}
+
+.ban-head {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: flex-end;
+  padding-bottom: 6rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.ban-head h1 {
+  font-size: 1.875rem; /* text-3xl */
+  line-height: 1.25;   /* leading-tight */
+  font-weight: 700;    /* font-bold */
+  text-align: center;  /* text-center */
+  max-width: 18rem;  
+}
+
+@media (min-width: 768px) {
+  .ban-head h1 {
+    font-size: 2.25rem;  /* md:text-4xl */
+    line-height: 2.5rem;
+    text-align: left;    /* md:text-left */
+    max-width: 20rem;    /* md:max-w-80 */
+  }
+}
+
+@media (min-width: 1024px) {
+  .ban-head h1 {
+    font-size: 3rem;       /* lg:text-5xl */
+    line-height: 3.75rem;  /* lg:leading-15 */
+    max-width: 26.25rem;   /* lg:max-w-105 */
+  }
+}
+
+
