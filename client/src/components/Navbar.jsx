@@ -1,16 +1,23 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {NavLink} from 'react-router-dom'
 import { useAppContext } from '../context/AppContext'
 import { assets } from '../assets/assets'
 
 const Navbar = () => {
      const [open, setOpen] = React.useState(false)
-     const {user, setUser, setShowUserLogin, navigate} = useAppContext()
+     const {user, setUser, setShowUserLogin, navigate, setSearchQuery, searchQuery}
+      = useAppContext()
 
      const logout = async () => {
         setUser(null);
         navigate('/')
      }
+
+     useEffect(()=> {
+        if (searchQuery.length > 0) {
+            navigate("/products")
+        }
+     },[searchQuery])
 
   return (
     // Navigation line 
@@ -28,8 +35,11 @@ const Navbar = () => {
                 <NavLink to='/'>Contact</NavLink>
                 
 
-                <div className="hidden lg:flex items-center text-sm gap-2 border border-gray-300 px-3 rounded-full">
-                    <input className="py-1.5 w-full bg-transparent outline-none placeholder-gray-500" type="text" placeholder="Search products" />
+                <div className="hidden lg:flex items-center text-sm gap-2 
+                border border-gray-300 px-3 rounded-full">
+                    <input onChange={(e)=> setSearchQuery(e.target.value)} 
+                    className="py-1.5 w-full bg-transparent outline-none 
+                    placeholder-gray-500" type="text" placeholder="Search products" />
                     
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M10.836 10.615 15 14.695" stroke="#7A7B7D" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
