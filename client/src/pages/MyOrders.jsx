@@ -5,15 +5,27 @@ import { dummyOrders } from '../assets/assets';
 const MyOrders = () => {
 
     const [myOrders, setMyOrders] = useState([])
-    const {currency} = useAppContext()
+    const {currency, axios, user} = useAppContext()
+    // axios, user added after bss
 
     const fetchMyOrders = async ()=> {
-      setMyOrders(dummyOrders)
+    // added after bss
+        try {
+           const {data} = await axios.get('/api/order/user')  // API call
+           if (data.success) {
+                setMyOrders(data.orders)
+           }
+
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     useEffect(()=>{
+      if (user) {
       fetchMyOrders()
-    },[])
+      }
+    },[user])
 
   return (
     <div className='mt-16 pb-16'>
@@ -48,7 +60,7 @@ const MyOrders = () => {
                     </div>
 
                     <div className='flex flex-col justify-center md:ml-8 mb-4 md:mb-0'>
-                        <p>Quantity: {item.quanitity || "1"}</p>
+                        <p>Quantity: {item.quantity}</p>
                         <p>Status: {order.status}</p>
                         <p>Date: {new Date(order.createdAt).toLocaleDateString()}</p>
                     </div>
