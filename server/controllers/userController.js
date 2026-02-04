@@ -8,13 +8,13 @@ export const register = async (req, res)=> {
         const {name, email, password} = req.body;
 
         if (!name || !email || !password) {
-            return res.json({success:false, message: 'Missing Details'})
+            return res.json({success: false, message: 'Missing Details'})
         }
 
         const existingUser = await User.findOne({email})
 
         if (existingUser)
-            return res.json({success:false, message: 'User already exists'})
+            return res.json({success: false, message: 'User already exists'})
 
         // if the user does not exist, create user 
         // when creating users, you have to encrypt the user's password
@@ -33,7 +33,7 @@ export const register = async (req, res)=> {
             //Use secure cookie in production
             sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'strict', 
             // CSRF protection
-            maxAge: 7 * 24 * 60 * 60 * 1000, // Cookie expiration time
+            maxAge: 7 * 24 * 60 * 60 * 1000 // Cookie expiration time
         })
         return res.json({success: true, user: {email: user.email, name: user.name}})
 
@@ -72,7 +72,7 @@ export const login = async (req, res)=> {
             //Use secure cookie in production
             sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'strict', 
             // CSRF protection
-            maxAge: 7 * 24 * 60 * 60 * 1000, // Cookie expiration time
+            maxAge: 7 * 24 * 60 * 60 * 1000 // Cookie expiration time
         })
         return res.json({success: true, user: {email: user.email, name: user.name}})
 
@@ -85,7 +85,7 @@ export const login = async (req, res)=> {
 // Check Auth: /api/user/is-auth
 export const isAuth = async (req, res)=> {
     try {
-        const {userId} = req.body;
+        const { userId } = req.body;
         const user = await User.findById(userId).select("-password")
         return res.json({success: true, user})
     } catch (error) {
